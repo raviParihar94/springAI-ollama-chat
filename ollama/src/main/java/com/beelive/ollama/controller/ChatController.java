@@ -9,17 +9,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+
 public class ChatController {
+
 
     private final ChatClient chatClient;
 
-    public ChatController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
+    public ChatController(ChatClient chatClient){
+        this.chatClient= chatClient;
     }
 
 
-    @GetMapping("/chat")
+    @GetMapping("/write")
     public String chat(@RequestParam("message") String message ){
-        return chatClient.prompt(message).call().content();
+        String response  = chatClient.
+                prompt()
+                .system(
+                        """
+You are a professional customer service assistant which helps drafting email responses to improve the productivity of the customer support team
+"""
+                )
+                .call().content();
+        return  response;
+
     }
 }

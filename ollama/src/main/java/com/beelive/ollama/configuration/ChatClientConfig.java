@@ -16,7 +16,7 @@ public class ChatClientConfig {
     private final Resource defaultSystemPromptTemplate;
 
     // Spring automatically injects @Value parameters in constructors
-    public ChatClientConfig(@Value("${spring.ai.system.prompt:classpath:/templates/systemPromptTemplate.st}") Resource defaultSystemPromptTemplate) {
+    public ChatClientConfig(@Value("${spring.ai.system.prompt:classpath:/promptTemplates/systemPromptTemplate.st}") Resource defaultSystemPromptTemplate) {
         this.defaultSystemPromptTemplate = defaultSystemPromptTemplate;
     }
 

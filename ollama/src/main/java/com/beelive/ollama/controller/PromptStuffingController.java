@@ -14,7 +14,7 @@ public class PromptStuffingController {
 
     private final ChatClient chatClient;
 
-    @Value("classpath:/templates/systemPromptTemplate.st")
+    @Value("classpath:/promptTemplates/systemPromptTemplate.st")
     Resource systemPromptTemplate;
     public PromptStuffingController(ChatClient chatClient){
         this.chatClient= chatClient;

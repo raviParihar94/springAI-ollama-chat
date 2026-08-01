@@ -17,12 +17,14 @@ public class HelpDeskTools {
 
   private final  Logger LOGGER = LoggerFactory.getLogger(HelpDeskTools.class);
 
-  private  final HelpDeskTicketService helpDeskTicketService;
+  private final HelpDeskTicketService helpDeskTicketService;
+
+
   @Tool(name="createTicket", description =  "Create the support Ticket")
   String createTickets(@ToolParam(description = "details to create a Support Ticket") TicketRequest ticketRequest , ToolContext toolContext){
       String userName = (String )toolContext.getContext().get("userName");
-      HelpDeskTicket heplDeskTicket = helpDeskTicketService.createHeplDeskTicket(ticketRequest, userName);
-      return "Ticket # " + heplDeskTicket.getId() + " Created successfully for user "+ heplDeskTicket.getUserName() ;
+      HelpDeskTicket helpDeskTicket = helpDeskTicketService.createHelpDeskTicket(ticketRequest, userName);
+      return "Ticket # " + helpDeskTicket.getTicketId() + " Created successfully for user "+ helpDeskTicket.getUserName() ;
   }
 
 }

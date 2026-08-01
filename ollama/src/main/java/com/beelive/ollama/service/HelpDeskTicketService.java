@@ -17,7 +17,7 @@ public class HelpDeskTicketService {
 
     private final HelpDeskTicketRepository helpDeskRepository;
 
-    public HelpDeskTicket createHeplDeskTicket(TicketRequest ticketRequest, String userName){
+    public HelpDeskTicket createHelpDeskTicket(TicketRequest ticketRequest, String userName){
         HelpDeskTicket ticket =  HelpDeskTicket.builder()
                 .userName(userName)
                 .status(TicketStatus.OPEN)

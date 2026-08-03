@@ -18,7 +18,7 @@ import java.util.List;
 public class WebSearchDocumentRetriever implements DocumentRetriever {
 
     private static final Logger logger = LoggerFactory.getLogger(WebSearchDocumentRetriever.class);
-    private static final String TAVILY_API_KEY = "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";
+    private static final String TAVILY_API_KEY = "TAVILY_API_KEY";
     private static final String TAVILY_BASE_URL = "https://api.tavily.com/search";
     private static final int DEFAULT_RESULT_LIMIT = 5;
     private final int resultLimit;
@@ -26,7 +26,7 @@ public class WebSearchDocumentRetriever implements DocumentRetriever {
 
     public WebSearchDocumentRetriever(RestClient.Builder clientBuilder, int resultLimit) {
         Assert.notNull(clientBuilder, "clientBuilder cannot be null");
-        String apiKey = TAVILY_API_KEY;
+        String apiKey = System.getenv(TAVILY_API_KEY);
         Assert.hasText(apiKey, "Environment variable " + TAVILY_API_KEY + " must be set");
         this.restClient = clientBuilder
                 .baseUrl(TAVILY_BASE_URL)

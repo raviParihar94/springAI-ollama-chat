@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,7 @@ public class HelpDeskTicketService {
 
     private final HelpDeskTicketRepository helpDeskRepository;
 
-    public HelpDeskTicket createHeplDeskTicket(TicketRequest ticketRequest, String userName){
+    public HelpDeskTicket createHelpDeskTicket(TicketRequest ticketRequest, String userName){
         HelpDeskTicket ticket =  HelpDeskTicket.builder()
                 .userName(userName)
                 .status(TicketStatus.OPEN)
@@ -28,4 +29,8 @@ public class HelpDeskTicketService {
 
     }
 
+
+    public List<HelpDeskTicket> getTicketsByUserName(String userName ){
+        return helpDeskRepository.findByUserName(userName);
+    }
 }
